@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fire Touch Lock</string>
+    <string name="service_description">Sperrt den Bildschirm gegen Berührungen, etwa während ein Kind ein Video schaut. Sperren und entsperren: Lauter, Leiser, Lauter, Leiser zügig hintereinander drücken (innerhalb von 3 Sekunden). Entsperren geht auch, indem man die vier Punkte in den Ecken im Uhrzeigersinn antippt, oben links beginnend. Die App liest keine Bildschirminhalte.</string>
+    <string name="locked">Touchsperre an</string>
+    <string name="unlocked">Touchsperre aus</string>
+    <string name="status_active">Die Bedienungshilfe ist eingeschaltet, die Touchsperre ist bereit.</string>
+    <string name="status_inactive">Die Bedienungshilfe ist nicht eingeschaltet, ohne sie funktioniert die Touchsperre nicht. Im Elternprofil unter Einstellungen → Bedienungshilfen einschalten, im Kinderprofil einmalig per ADB (Anleitung im Repo langfeld/fire-touch-lock-app).</string>
+    <string name="instructions">Sperren und entsperren: Lauter, Leiser, Lauter, Leiser zügig hintereinander drücken (innerhalb von 3 Sekunden). Eine kurze Meldung zeigt „Touchsperre an“ oder „Touchsperre aus“.\n\nWährend der Sperre reagiert der Bildschirm nicht, auch die Navigationsleiste und die Lautstärketasten nicht. Ein Video läuft weiter.\n\nEntsperren ohne Tasten: den gesperrten Bildschirm berühren, dann erscheinen dezent vier Punkte in den Ecken. Diese im Uhrzeigersinn antippen, oben links beginnend, alle innerhalb von 5 Sekunden.\n\nNotausgang: Ein Neustart oder Profilwechsel hebt die Sperre immer auf.</string>
+    <string name="open_settings">Bedienungshilfen öffnen</string>
+    <string name="settings_unavailable">Die Einstellungen für Bedienungshilfen sind hier nicht erreichbar.</string>
+</resources>
