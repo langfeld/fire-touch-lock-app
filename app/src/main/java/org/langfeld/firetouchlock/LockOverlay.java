@@ -12,7 +12,8 @@ import android.view.View;
 
 /**
  * Durchsichtige Fläche über dem ganzen Bildschirm, die jede Berührung abfängt.
- * Bei einer Berührung erscheinen dezent die vier Eckpunkte zum Entsperren und ein Schloss in der Mitte.
+ * Bei einer Berührung erscheinen dezent die vier Eckpunkte zum Entsperren und ein Schloss in der Mitte;
+ * das Schloss liegt auf einem halbdurchsichtigen dunklen Kreis, damit es auch auf hellem Bild zu sehen ist.
  * Die Punkte zeigen absichtlich keinen Fortschritt, damit ein Kind die Reihenfolge nicht durch Ausprobieren findet.
  */
 @SuppressLint("ViewConstructor")
@@ -26,11 +27,13 @@ final class LockOverlay extends View {
     private static final float DOT_RADIUS_DP = 9;
     private static final float OUTLINE_DP = 1.5f;
     private static final float LOCK_SIZE_DP = 40;
+    private static final float LOCK_BACKDROP_RADIUS_DP = 32;
 
     private final Runnable onUnlock;
     private final CornerSequence corners = new CornerSequence(SEQUENCE_TIMEOUT_MILLIS);
     private final Paint dotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint outlinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint backdropPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Drawable lock;
     private final float density;
     private final Runnable fadeOutTask = this::fadeOut;
@@ -43,6 +46,7 @@ final class LockOverlay extends View {
         density = context.getResources().getDisplayMetrics().density;
         dotPaint.setColor(Color.WHITE);
         outlinePaint.setColor(Color.BLACK);
+        backdropPaint.setColor(Color.BLACK);
         lock = context.getDrawable(R.drawable.ic_lock);
     }
 
@@ -120,7 +124,9 @@ final class LockOverlay extends View {
             canvas.drawCircle(x, y, dot + outline, outlinePaint);
             canvas.drawCircle(x, y, dot, dotPaint);
         }
-        lock.setAlpha(Math.round(90 * hintAlpha));
+        backdropPaint.setAlpha(Math.round(80 * hintAlpha));
+        canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, LOCK_BACKDROP_RADIUS_DP * density, backdropPaint);
+        lock.setAlpha(Math.round(170 * hintAlpha));
         lock.draw(canvas);
     }
 }
